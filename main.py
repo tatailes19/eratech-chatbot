@@ -5,10 +5,18 @@ import requests
 import concurrent.futures
 import os
 from groq import Groq
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust this for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
