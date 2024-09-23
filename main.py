@@ -69,7 +69,7 @@ def groq_prompt(prompt):
     convo.append({'role': 'user', 'content': prompt})
     chat_completion = client.chat.completions.create(messages=convo, model='llama3-70b-8192')
     response = chat_completion.choices[0].message
-    convo.append(response)
+    #convo.append(response)
     return response.content
 
 class chat(BaseModel):
