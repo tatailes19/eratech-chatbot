@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # # Initialize Groq client
-# client = Groq(api_key="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")
+
 
 
 sys_msg = (
