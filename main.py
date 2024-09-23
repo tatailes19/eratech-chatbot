@@ -72,7 +72,7 @@ class chat(BaseModel):
 @app.post("/ask")
 def ask(request: chat):
     try:
-        result = groq_prompt(prompt=request.prompt)
+        result = groq_prompt(request.prompt)
         return {"results": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
