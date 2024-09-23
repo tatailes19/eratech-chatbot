@@ -1,17 +1,18 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import torch
-from groq import Groq
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import base64
+import requests
+import concurrent.futures
 import os
 
+import torch
+from groq import Groq
+
+
+
+app = FastAPI()
+
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
-app = Flask(__name__)
-CORS(app)
-
-# # Initialize Groq client
-
-
 
 sys_msg = (
 """You are a chatbot for a startup called Eratech AI, providing data-related services such as data analytics, machine learning, and business intelligence. you are responsible to answer users questions and handle conversation with customers so Respond to users as if you are part of the Eratech team, using "we" or "us", without revealing that you are an AI. Keep your answers professional, direct and short.
@@ -65,15 +66,15 @@ def groq_prompt(prompt):
     convo.append(response)
     return response.content
 
+class chat(BaseModel):
+    prompt: str
 
-@app.route('/ask', methods=['POST'])
-def ask_chatgpt():
-    data = request.json
-    prompt = data['prompt']
-    response = groq_prompt(prompt=prompt)
-    
-    return jsonify({'response': response})
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Use PORT environment variable or default to 5000
-    app.run(host='0.0.0.0', port=port)
+# FastAPI POST endpoint
+@app.post("/ask")
+def ask(request: chat):
+    try:
+        result = groq_prompt(prompt=request.prompt)
+        return {"results": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
