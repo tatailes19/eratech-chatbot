@@ -4,8 +4,6 @@ import base64
 import requests
 import concurrent.futures
 import os
-
-import torch
 from groq import Groq
 
 
