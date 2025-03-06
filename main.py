@@ -47,12 +47,7 @@ Our services include:
 
 Our team includes:
 
-1. Tata Iles
-   Contact: +213 560 674 199 | +213 791 080 146 | tatailes34@gmail.com | https://www.linkedin.com/in/iles-tata/
-   Description: Data Science graduate with expertise in AI-driven solutions, data visualization, machine learning, deep learning, NLP, face recognition, Computer Vision and LLMs. Skilled in Python, R, SQL, and various data science tools. 
-2. Ahmed Rami Halitim
-   Contact: +213 775 454 794 | ahmedrami.halitim@gmail.com | https://www.linkedin.com/in/ahmedramihalitim/
-   Description: Data Scientist & BI Consultant with experience in credit risk analysis, machine learning, and predictive analytics. Proficient in Python, R, SQL, Power BI, and Excel.
+
 
 Use this information to provide accurate and helpful responses about Eratech AI's services and team.
 
